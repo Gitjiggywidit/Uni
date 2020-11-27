@@ -36,12 +36,3 @@ public abstract class CardGame {
 	public abstract int compareHands(Player hand1, Player hand2);
 	
 }
-
-
-
-//public CardGame (int nplayers)
-//public abstract void dealInitialCards()
-//public abstract int compareHands(Player hand1, Player hand2)
-//public Deck getDeck() returns the deck.
-//public Player getPlayer(int i)
-//public int getNumPlayers() gets the number of players in the game.
