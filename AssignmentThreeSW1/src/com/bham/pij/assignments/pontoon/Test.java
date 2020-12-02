@@ -105,9 +105,9 @@ public class Test {
 	public static void pontoonTest() {
 		Pontoon pontoon = new Pontoon(4);
 		
-		System.out.println("\nPontoon:\nPontoon deck contains 52 cards: " + (pontoon.deck.size() == 52));
-		pontoon.dealInitalCards();
-		int numPlayers = pontoon.players.size();
+		System.out.println("\nPontoon:\nPontoon deck contains 52 cards minus cards dealt (" + (2*pontoon.getNumPlayers()) + "): " + (pontoon.deck.size() == (52 - (2*pontoon.getNumPlayers()))));
+//		pontoon.dealInitalCards();
+		int numPlayers = pontoon.getNumPlayers();
 		int cardsDealt = pontoon.players.size() * 2;
 		System.out.println(cardsDealt + " Cards dealt for " + numPlayers + " Players");
 		System.out.println("Pontoon deck contains 48 cards: " + (pontoon.deck.size() == (52 - cardsDealt)));
@@ -148,7 +148,6 @@ public class Test {
 		System.out.println("player4.getNumericalHandValue(): " + player4.getNumericalHandValue());
 		System.out.println("player4.getBestNumericalHandValue(): " + player4.getBestNumericalHandValue());
 		System.out.println("Pontoon deck contains " + (52 - (cardsDealt + 6)) + " cards: " + (pontoon.deck.size() == (52 - (cardsDealt + 6))));
-		
 		System.out.println("\nplayer2 vs player3: " + pontoon.compareHands(player2, player3));
 		System.out.println("\nplayer3 vs player4: " + pontoon.compareHands(player3, player4));
 	}

@@ -10,8 +10,8 @@ public abstract class CardGame {
 	ArrayList<Player> players = new ArrayList<Player>();
 	Deck deck; 
 
-	public CardGame(int nPlayers) {
-		for(int i = 1; i <= nPlayers; i++) {
+	public CardGame(int nplayers) {
+		for(int i = 1; i <= nplayers; i++) {
 			String playerName = "Player_" + Integer.toString(i);
 			Player player = new Player(playerName);
 			this.players.add(player);
@@ -20,14 +20,14 @@ public abstract class CardGame {
 	}
 	
 	public Deck getDeck() {
-			return deck;
+			return this.deck;
 		}
 	
 	public Player getPlayer(int playerNumber) {
 		return players.get(playerNumber - 1);
 	}
 	
-	public int numberOfPlayers() {
+	public int getNumPlayers() {
 		return players.size();
 	}
 	

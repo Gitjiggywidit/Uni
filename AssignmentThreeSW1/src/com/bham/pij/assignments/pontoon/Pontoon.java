@@ -7,13 +7,9 @@ import java.util.ArrayList;
 
 public class Pontoon extends CardGame {
 	
-	Deck deck;
-	ArrayList<Player> players;
-	
 	public Pontoon (int players) {
 		super(players);
-		this.deck = super.getDeck();
-		this.players = super.players;
+		dealInitalCards();
 	}
 
 	@Override
