@@ -17,7 +17,11 @@ public class Pontoon extends CardGame {
 		for(Player player: players) {
 			player.dealToPlayer(deck.dealRandomCard());
 			player.dealToPlayer(deck.dealRandomCard());
+			if(player.getBestNumericalHandValue() < 16) {
+				player.dealToPlayer(deck.dealRandomCard());
+			}
 		}
+		
 	}
 	
 	public int handValue(Player player) {
@@ -38,16 +42,15 @@ public class Pontoon extends CardGame {
 			//returns 22 if it is a Five Card Trick
 			return 22;
 			
-		} else if (handSize > 2 && value == 21) {
+		} else if (value == 21) {
 			//returns 21 if handValue == 21
-			return 21;
+			return value;
 			
 		} else {
 			return value;
 		}
 	}
 	
-	// May have to factor in pontoon (ACE + 10 card) and 5 card (5 card total under 21)
 	@Override
 	public int compareHands(Player hand1, Player hand2) {
 		int hand1Val = handValue(hand1);

@@ -144,9 +144,9 @@ public class Test {
 		player4.dealToPlayer(pontoon.deck.dealRandomCard());
 		int player4HandVal = pontoon.handValue(player4);
 		player4.getCards().forEach((n) -> System.out.println(n.getValue()));
-		System.out.println("pontoon.handValue(player4): " + player4HandVal);
-		System.out.println("player4.getNumericalHandValue(): " + player4.getNumericalHandValue());
-		System.out.println("player4.getBestNumericalHandValue(): " + player4.getBestNumericalHandValue());
+//		System.out.println("pontoon.handValue(player4): " + player4HandVal);
+//		System.out.println("player4.getNumericalHandValue(): " + player4.getNumericalHandValue());
+		System.out.println(player4.getBestNumericalHandValue());
 		System.out.println("Pontoon deck contains " + (52 - (cardsDealt + 6)) + " cards: " + (pontoon.deck.size() == (52 - (cardsDealt + 6))));
 		System.out.println("\nplayer2 vs player3: " + pontoon.compareHands(player2, player3));
 		System.out.println("\nplayer3 vs player4: " + pontoon.compareHands(player3, player4));
@@ -166,9 +166,9 @@ Your 'twist' (dealing an extra card to a player) functionality does not work cor
 Your constructor does not initialise the game correctly. You must make sure that you pass the number of players to the Pontoon constructor.
 Your compare hands functionality does not work correctly. Make sure that you have read the rules in the specification about the ranking of hands.
 
-FOUR
-THREE
-JACK
-ACE
-QUEEN
+Your class does not compute the numerical value of hands with multiple cards correctly. This method checks ACEs.
+Your 'twist' (dealing an extra card to a player) functionality does not work correctly. This test checks what happens when an extra card is dealt to a player.
+Your constructor does not initialise the game correctly. You must make sure that you pass the number of players to the Pontoon constructor. Your constructor must also create the player objects.
+Your compare hands functionality does not work correctly. Make sure that you have read the rules in the specification about the ranking of hands.
+
 */
