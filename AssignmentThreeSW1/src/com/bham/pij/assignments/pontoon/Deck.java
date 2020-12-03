@@ -35,17 +35,7 @@ public class Deck {
 			}; 
 
 	public Deck() {
-		for(int s = 0; s <= 3; s++) {
-			Card.Suit suit = suits[s];
-			
-			for(int v = 0; v <= 12; v++) {
-				Card.Value value = values[v];
-				Card card = new Card(suit, value);
-				
-				this.deck.add(card);
-			}
-		}
-		shuffle();
+		createDeck();
 	}
 	
 	public void shuffle() {
@@ -54,6 +44,10 @@ public class Deck {
 	
 	public void reset() {
 		deck.clear();
+		createDeck();
+	}
+	
+	public void createDeck() {
 		for(int s = 0; s <= 3; s++) {
 			Card.Suit suit = suits[s];
 			
@@ -68,12 +62,16 @@ public class Deck {
 	}
 	
 	public Card dealRandomCard() {
-		Random rand = new Random();
-		int randomIndex = rand.nextInt(size());
-		Card cardToDeal = deck.get(randomIndex);
-		deck.remove(randomIndex);
-		
-		return cardToDeal;
+		if (size() == 0) {
+			return null;
+		}
+		else {
+			Random rand = new Random();
+			int randomIndex = rand.nextInt(size());
+			Card cardToDeal = deck.get(randomIndex);
+			deck.remove(randomIndex);
+			return cardToDeal;
+		}
 	}
 	
 	public Card getCard(int i) {
@@ -84,8 +82,8 @@ public class Deck {
 		return deck.size();
 	}
 	
-	public ArrayList<Card> getDeck() {
-		return deck;
-	}
+//	public ArrayList<Card> getDeck() {
+//		return deck;
+//	}
 	
 }

@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class Pontoon extends CardGame {
 	
-	public Pontoon (int players) {
-		super(players);
+	public Pontoon (int nplayers) {
+		super(nplayers);
 		dealInitalCards();
 	}
 

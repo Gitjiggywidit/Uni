@@ -53,38 +53,47 @@ public class Player {
 		int handSize = getHandSize();
 		ArrayList<Integer> allValues = new ArrayList<Integer>();
 		
+		//Give the Array and initial value for the hand to modify
 		int sum = 0;
 		allValues.add(sum);
 		
+		//iterate through the hand
 		for(int i = 0; i < handSize; i++) {
+			//Get the value of the card in hand and determine if it is an ACE
 			Card card = hand.get(i);
 			boolean ace = card.getValue() == Card.Value.ACE;
 			ArrayList<Integer> cardNumValue = card.getNumericalValue();
 			
+			//If the card is not an ACE:
 			if(!ace) {
+				//Give the number of possible values so far
 				int arraySize = allValues.size();
 				for(int j = 0; j < arraySize; j++) {
+					//Get the value of the card from card class, method return ArrayList of len 1 so get(0) always returns the right number
 					int value = cardNumValue.get(0);
+					//Adds that value to each item in the Values ArrayList
 					allValues.set(j, (allValues.get(j) + value));
 				}
-				
+			//If the card is an ACE:
 			} else {
+				//Give the number of possible values so far
 				int arraySize = allValues.size();
 				
 				//Copy the array as each element will have to add both 1 and 11
 				ArrayList<Integer> extendValues = (ArrayList<Integer>) allValues.clone();
 				
 				//Add 1 to the original array
-				//allValues.forEach((n) -> n += 1);
 				for(int j = 0; j < arraySize; j++) allValues.set(j, (allValues.get(j) + 1));				
 				
 				//add 11 to the copied array, then add the list onto allValue list.
-				//extendValues.forEach((n) -> n += 11);
 				for(int j = 0; j < arraySize; j++) extendValues.set(j, (extendValues.get(j) + 11));
-
+				
+				//Combines both of the ArrayLists into one to be used again or returned
 				allValues.addAll(extendValues);
 			}
 		}
+		//returning the sorted list
+		Collections.sort(allValues);
 		return allValues;
 	}
 
@@ -94,18 +103,20 @@ public class Player {
 	 * @return
 	 */
 	public int getBestNumericalHandValue() {
+		//List of the possible values
 		ArrayList<Integer> values = getNumericalHandValue();
 		int optimalNum = 0;
 		
+		//Checks to see if any of the value is bigger than the last but still allowed (21 or under) starting with 0 (nobody will have 0 card and therefore 0 value)
 		for(int value: values) {
 			boolean optimal = value > optimalNum && value < 22;
 			if(optimal) optimalNum = value;
 		}
-		if(optimalNum == 0) {
-			Collections.sort(values);
-			return values.get(0);
-		}
-		return optimalNum;
+		//This is if there is not option in the hand that is 21 or below, just returns the smallest value of the illegal values.
+		if(optimalNum == 0) return values.get(0);
+		
+		//Returns the best value given if at least one option  is less than 21
+		else return optimalNum;
 	}
 	
 	/**
