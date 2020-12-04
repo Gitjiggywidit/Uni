@@ -24,14 +24,14 @@ public abstract class CardGame {
 		}
 	
 	public Player getPlayer(int playerNumber) {
-		return players.get(playerNumber - 1);
+		return players.get(playerNumber);
 	}
 	
 	public int getNumPlayers() {
 		return players.size();
 	}
 	
-	public abstract void dealInitalCards();
+	public abstract void dealInitialCards();
 	
 	public abstract int compareHands(Player hand1, Player hand2);
 	

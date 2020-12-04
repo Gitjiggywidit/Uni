@@ -92,6 +92,9 @@ public class Player {
 				allValues.addAll(extendValues);
 			}
 		}
+		//Remove the duplicates
+		allValues = clearDuplicates(allValues);
+		
 		//returning the sorted list
 		Collections.sort(allValues);
 		return allValues;
@@ -133,6 +136,16 @@ public class Player {
 	 */
 	public int getHandSize() {
 		return hand.size();
+	}
+	
+	//Method to ensure no dupes in the getNumericalHandValue method 
+	public ArrayList<Integer> clearDuplicates(ArrayList<Integer> arraylist) {
+		ArrayList<Integer> uniqueValues = new ArrayList<Integer>();
+		for(int intVal: arraylist) {
+			boolean inList = uniqueValues.contains(intVal);
+			if (!inList) uniqueValues.add(intVal);
+		}
+		return uniqueValues;
 	}
 	
 }

@@ -9,17 +9,13 @@ public class Pontoon extends CardGame {
 	
 	public Pontoon (int nplayers) {
 		super(nplayers);
-		dealInitalCards();
 	}
 
 	@Override
-	public void dealInitalCards() {
+	public void dealInitialCards() {
 		for(Player player: players) {
 			player.dealToPlayer(deck.dealRandomCard());
 			player.dealToPlayer(deck.dealRandomCard());
-			if(player.getBestNumericalHandValue() < 16) {
-				player.dealToPlayer(deck.dealRandomCard());
-			}
 		}
 		
 	}
