@@ -152,21 +152,39 @@ public class Test {
 	}
 	
 	static void pontwoon() {
-		Pontoon pontwoon = new Pontoon(4);
-		for(Player player: pontwoon.players) player.getCards().forEach((n) -> System.out.println(player.getName() + " " + player.getBestNumericalHandValue() + " " + n.getValue()));
-		System.out.println("\n");
-		for(Player player: pontwoon.players) {
-			if(player.getBestNumericalHandValue() < 21) {
-				player.dealToPlayer(pontwoon.deck.dealRandomCard());
-				System.out.println("\n");
-				player.getCards().forEach((n) -> System.out.println(player.getName() + " " + player.getBestNumericalHandValue() + " " + n.getValue()));
-			}
-		}
+		Pontoon pontwoon = new Pontoon(2);
+//		for(Player player: pontwoon.players) player.getCards().forEach((n) -> System.out.println(player.getName() + " " + player.getBestNumericalHandValue() + " " + n.getValue()));
+//		System.out.println("\n");
+//		for(Player player: pontwoon.players) {
+//			if(player.getBestNumericalHandValue() < 21) {
+//				player.dealToPlayer(pontwoon.deck.dealRandomCard());
+//				System.out.println("\n");
+//				player.getCards().forEach((n) -> System.out.println(player.getName() + " " + player.getBestNumericalHandValue() + " " + n.getValue()));
+//			}
+//		}
+		Player p1 = pontwoon.getPlayer(0);
+		Player p2 = pontwoon.getPlayer(1);
+		
+		p1.getCards().clear();
+		p2.getCards().clear();
+		
+		p2.dealToPlayer(new Card(Card.Suit.CLUBS, Card.Value.ACE));
+		p2.dealToPlayer(new Card(Card.Suit.CLUBS, Card.Value.TEN));
+		
+		System.out.println(pontwoon.handValue(p2));
+		
+		p1.dealToPlayer(new Card(Card.Suit.CLUBS, Card.Value.EIGHT));
+		p1.dealToPlayer(new Card(Card.Suit.CLUBS, Card.Value.TEN));
+		p1.dealToPlayer(new Card(Card.Suit.CLUBS, Card.Value.THREE));
+		
+		System.out.println(pontwoon.handValue(p1));
+		
+		System.out.println((pontwoon.compareHands(p1, p2)) == 1);
 	}
 	public static void main(String[] args) {
-		PlayerTest();
-		pontoonTest();
-		System.out.println("\n");
+//		PlayerTest();
+//		pontoonTest();
+//		System.out.println("\n");
 		pontwoon();
 	}
 

@@ -25,12 +25,9 @@ public class Pontoon extends CardGame {
 		int value = player.getBestNumericalHandValue();
 		ArrayList<Card> hand = player.getCards();
 		
-		boolean tenCard = hand.contains(Card.Value.TEN) || hand.contains(Card.Value.JACK) || hand.contains(Card.Value.QUEEN) || hand.contains(Card.Value.KING);
-		boolean ace = hand.contains(Card.Value.ACE);
-		
 		if (value > 21) return 0;
 		
-		if (handSize == 2 && (ace && tenCard)) {
+		if (handSize == 2 && value == 21) {
 			//returns 23 if it is a pontoon
 			return 23;
 			
@@ -38,7 +35,7 @@ public class Pontoon extends CardGame {
 			//returns 22 if it is a Five Card Trick
 			return 22;
 			
-		} else if (value == 21) {
+		} else if (value == 21 && handSize >= 3) {
 			//returns 21 if handValue == 21
 			return value;
 			

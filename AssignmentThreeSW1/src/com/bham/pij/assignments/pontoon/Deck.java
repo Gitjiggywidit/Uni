@@ -39,7 +39,20 @@ public class Deck {
 	}
 	
 	public void shuffle() {
-		Collections.shuffle(deck);
+		Random rand = new Random();
+		
+		for (int c = 0; c < size(); c++) {
+			int randIndex = rand.nextInt(size());
+			
+			//Selects the next card in the deck and a random card from the deck
+			Card cardToShuffle = this.deck.get(c);
+			Card cardAtShuffleLoc = this.deck.get(randIndex);
+			
+			//Set the card to shuffle to at the random index and sets the card at the random index to c			
+			this.deck.set(randIndex, cardToShuffle);
+			this.deck.set(c, cardAtShuffleLoc);
+		}
+//		Collections.shuffle(deck);
 	}
 	
 	public void reset() {
