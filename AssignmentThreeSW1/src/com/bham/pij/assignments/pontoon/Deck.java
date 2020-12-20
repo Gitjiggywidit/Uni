@@ -2,7 +2,6 @@ package com.bham.pij.assignments.pontoon;
 
 //Dominic Carroll 1678959
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -40,7 +39,7 @@ public class Deck {
 	
 	public void shuffle() {
 		Random rand = new Random();
-		
+		// Iterates through the cards in the deck
 		for (int c = 0; c < size(); c++) {
 			int randIndex = rand.nextInt(size());
 			
@@ -52,13 +51,13 @@ public class Deck {
 			this.deck.set(randIndex, cardToShuffle);
 			this.deck.set(c, cardAtShuffleLoc);
 		}
-//		Collections.shuffle(deck);
 	}
 	
 	public void reset() {
 		deck.clear();
 		createDeck();
 	}
+	
 	
 	public void createDeck() {
 		for(int s = 0; s <= 3; s++) {
